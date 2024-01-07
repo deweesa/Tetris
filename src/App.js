@@ -1,23 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import LandingPage from './LandingPage.js';
+import {useState} from 'react';
+
+
 
 function App() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  function sayClicked() {
+    alert('You clicked me');
+  }
+
+  function playClicked() {
+    setIsPlaying(true);
+  }
+
+  let inner = isPlaying? <p>playing</p> : <LandingPage onClick={playClicked}/>
   return (
     <div className="App">
-      <h1> Tetris! </h1>
-      <div className="Buttons">
-        <button onClick={sayClicked}>Play</button>
-        <button onClick={sayClicked}>Help</button>
-      </div>
-      <p>
-        High Scores (implementing later)
-      </p>
+      {inner}
     </div>
   );
-}
-
-function sayClicked() {
-  alert('You clicked me');
 }
 
 export default App;
